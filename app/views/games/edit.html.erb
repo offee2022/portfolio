@@ -1,0 +1,37 @@
+<% if @game.errors.any? %>
+  <%= @game.errors.count %> errors prohibited this book from being saved:
+  <ul>
+    <div class = "errors_message">
+      <% @game.errors.full_messages.each do |message| %>
+        <li class = "h3"><%= message %></li>
+      <% end %>
+    </div>
+  </ul>
+<% end %>
+<div class = "w-75 mx-auto bg-light">
+  <div class = "container">
+    <div class = "row">
+      <%= form_with model: @game, local:true do |f| %>
+        <div class="form-group">
+          <label for="game_title">Title</label>
+          <div class = "field">
+            <%= f.text_field :title, :size=>"55" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="game_image">Image</label>
+          <div class = "field">
+            <%= f.attachment_field :image %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="game_body">Body</label>
+          <div class = "field">
+            <%= f.text_area :body, :size=>"54x2" %>
+          </div>
+        </div>
+        <button class = "button button-primary", type = "submit">投稿</button>
+      <% end %>
+    </div>
+  </div>
+</div>

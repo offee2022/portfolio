@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
+    <div class="cover-container d-flex w-100 h-100 p-0 mx-auto flex-column">
+      <header class = "masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Portfolio</h3>
+          <% if user_signed_in? %>
+            <nav class="nav nav-masthead justify-content-end">
+              <a class = "nav-link" href = "/games">投稿一覧</a>
+              <a class = "nav-link" href = "/users">投稿者一覧</a>
+              <a class="nav-link" href = "/users/sign_out" data-method="delete" > ログアウト</a>
+              <a class="nav-link" href = "/users/<%= @user.id %>/edit"> <i class="fas fa-volume-mute"></i>Icon</a>
+            </nav>
+          <% else %>
+            <nav class="nav nav-masthead justify-content-end">
+              <a class="nav-link active" href = "/home/top"> トップページ</a>
+              <a class="nav-link" href = "/users/sign_in"> ログイン</a>
+              <a class="nav-link" href = "/users/sign_up"> 新規登録</a>
+            </nav>
+          <% end %>
+        </div>
+      </header>
+    </div>
+    <main class = "mb-auto">
+      <%= yield %>
+    </main>
+    <footer class="mastfoot mt-auto text-center">
+      <div class="inner">
+        <p>Produced by Yuji Saito.</p>
+      </div>
+    </footer>
+  </body>
+</html>

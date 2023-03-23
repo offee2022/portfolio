@@ -1,0 +1,20 @@
+<div class = "w-75 mx-auto bg-light">
+  <div class = "container">
+    <div class = "row">
+      <div class = "col-3">
+        <a><%= attachment_image_tag @user, :profile_image, size:'200x200', format:'jpg', fallback:"default-image.jpg" %></a>
+      </div>
+      <div class = "col-9">
+        <div class = "text-center">
+          <div class = "form-group">
+            <h2><%= @user.name %></h2>
+          </div>
+          <div class = "form-group">
+            <h2>Introduction</h2>
+          </div>
+          <h4><%= @user.introduction %></h4
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

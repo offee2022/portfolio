@@ -1,0 +1,26 @@
+<p id = "notice" class = "h2"><%= flash[:notice] %></p>
+<%= render "games/list" %>
+<div class="container my-5">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <%= attachment_image_tag user, :profile_image, size:'349x349', format:'jpg', fallback:"default-image.jpg" %>
+          <div class="card-body">
+            <h6 class = "card-text"><%= user.name %></h6>
+            <p class="card-text"><%= user.introduction %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary"><a href = "/users/<%= user.id %>">View</a></button>
+                <% if user == current_user %>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a href = "/users/<%= user.id %>/edit">Edit</a></button>
+                <% end %>
+              </div>
+              <small class="text-muted">9 mins</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
