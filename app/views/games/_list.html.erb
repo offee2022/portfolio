@@ -3,7 +3,9 @@
     <h1 class="jumbotron-heading">Games lists</h1>
     <p class="lead text-dark">Find the game you want to buy by referring to the recommended games posted by everyone! I'm sure this page will be useful for those of you who are looking for games.</p>
     <p>
-      <a href="/games/new" class="btn btn-primary my-2">投稿する</a>
+      <% if user_signed_in? %>
+        <a href="/games/new" class="btn btn-primary my-2">投稿する</a>
+      <% end%>
       <a href="/games" class="btn btn-success my-2">投稿一覧</a>
       <a href="/users" class="btn btn-light my-2">投稿者一覧</a>
     </p>
