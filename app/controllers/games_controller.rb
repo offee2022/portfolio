@@ -10,12 +10,14 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
-    @game.user_id = current_user.id
-    if @game.save
-      redirect_to games_path, notice: "無事に投稿できました。"
-    else
-      render :new
+    if user_signed_in?
+      @game = Game.new(game_params)
+      @game.user_id = current_user.id
+      if @game.save
+        redirect_to games_path, notice: "無事に投稿できました。"
+      else
+        render :new
+      end
     end
   end
 
